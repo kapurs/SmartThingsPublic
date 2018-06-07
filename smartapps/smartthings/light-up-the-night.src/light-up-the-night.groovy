@@ -45,11 +45,11 @@ def updated() {
 // New aeon implementation
 def illuminanceHandler(evt) {
 	def lastStatus = state.lastStatus
-	if (lastStatus != "on" && evt.integerValue < 30) {
+	if (lastStatus != "on" && evt.integerValue <= 1000) {
 		lights.on()
 		state.lastStatus = "on"
 	}
-	else if (lastStatus != "off" && evt.integerValue > 50) {
+	else if (lastStatus != "off" && evt.integerValue > 1000) {
 		lights.off()
 		state.lastStatus = "off"
 	}
